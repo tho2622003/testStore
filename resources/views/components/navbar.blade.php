@@ -5,6 +5,12 @@
         <span>Welcome, {{Auth::user()->name}}</span>
         @endauth
     </div>
+    <div>
+        <form action="/search" method="GET" class="flex flex-col space-y-2">
+            <input type="text" name="query" placeholder="Search..." value="{{ request('query') }}" class="p-2 rounded text-black">
+            <button type="submit" class="bg-blue-600 text-white p-2 rounded">Search</button>
+        </form>
+    </div>
     <div class="space-y-2">
         <a href="" class="block">By Year</a>
         <a href="" class="block">By Genre</a>

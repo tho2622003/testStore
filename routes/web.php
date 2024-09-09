@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AddController;
+use App\Http\Controllers\SearchController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::get('/', [ProductController::class, 'index']);
 
 Route::get('/create', [AddController::class, 'create'])->middleware('auth');
 Route::post('/create', [AddController::class, 'store'])->middleware('auth');
+
+Route::get('/search', SearchController::class);
 
 Route::get('/{product}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('product.edit');
