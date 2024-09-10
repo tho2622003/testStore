@@ -4,7 +4,12 @@
         $groupedProducts = $products->groupBy('format');
         @endphp
         @foreach ($groupedProducts as $format => $formatProducts)
-            <h2 class="col-span-full text-2xl font-bold mb-4">{{ $format }}</h2>
+        <div class="col-span-full">
+                <div class="flex justify-between">
+                    <h2 class="text-2xl font-bold mb-2">{{ $format }}</h2>
+                    <h1 class="text-lg mb-4">{{count($formatProducts)}} entries</h1>
+                </div>
+            </div>
             @foreach ($formatProducts as $product)
                 <x-card :product="$product"></x-card>
             @endforeach
