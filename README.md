@@ -29,7 +29,9 @@ npm run dev</pre>
 <ul>
     <li>User creation</li>
     <li>Basic session management (Sign in, sign out)</li>
+    <li>Add new releases 
     <li>View and edit individual release</li>
+    <li>Filter by year, genre or format</li>
     <li>Search function</li>
 </ul>
 
@@ -41,4 +43,4 @@ npm run dev</pre>
 </ul>
 
 <h1>Preview</h1>
-<img src="https://i.imgur.com/18Lpli7.png">
+<img src="https://i.imgur.com/noEuM3w.png"></img>
