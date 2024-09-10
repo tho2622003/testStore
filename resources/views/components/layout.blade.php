@@ -11,7 +11,9 @@
 <body class="bg-black text-white h-full">
     <div class="flex h-full">
         <x-navbar></x-navbar>
+        <main class="flex-1 ml-56 p-4">
             {{$slot}}
+        </main>
     </div>
 </body>
 

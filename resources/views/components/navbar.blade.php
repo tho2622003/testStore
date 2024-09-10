@@ -1,4 +1,4 @@
-<nav class="fixed top-0 bg-blue-800 p-5 flex flex-col space-y-4 justify-between w-52 h-full">
+<nav class="fixed top-0 left-0 bg-blue-800 p-5 flex flex-col space-y-4 justify-between w-56 h-full">
     <div>
         <a href="/" class="text-xl font-bold block">Musique Store</a>
         @auth
@@ -12,9 +12,9 @@
         </form>
     </div>
     <div class="space-y-2">
-        <a href="" class="block">By Year</a>
-        <a href="" class="block">By Genre</a>
-        <a href="" class="block">By Format</a>
+        <a href="{{ route('products.by_year') }}" class="block">By Year</a>
+        <a href="{{ route('products.by_genre') }}" class="block">By Genre</a>
+        <a href="{{ route('products.by_format') }}" class="block">By Format</a>
     </div>
     @guest
     <div class="space-y-2">

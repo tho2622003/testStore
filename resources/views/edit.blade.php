@@ -7,7 +7,7 @@
                 <x-heading>Edit this Release: {{$product->title}}</x-heading>
                 <x-field type="text" value="{{$product->title}}" attribute="title">Title</x-field>
                 <x-field type="text" value="{{$product->artist}}" attribute="artist">Artist</x-field>
-                <x-field type="date" value="{{ \Carbon\Carbon::parse($product->date)->format('Y-m-d') }}" attribute="date">Date of release</x-field>
+                <x-field type="date" value="{{ \Carbon\Carbon::parse($product->date)->format('d-m-Y') }}" attribute="date">Date of release</x-field>
                 <div class="block">
                     <label class="text-sm font-medium mr-4" for="genre">Choose a genre</label>
                     <select class="p-2 pr-10 text-black text-sm font-medium rounded-md mt-4" name="genre" id="genre">

@@ -8,7 +8,7 @@
             <a class="text-sm" href="">{{$product->artist}}</a>
         </div>
         <div class="flex flex-col items-center text-xs">
-            <span>Date: {{$product->date}}</span>
+            <span>Date: {{ \Carbon\Carbon::parse($product->date)->format('d-m-Y') }}</span>
             <span>Genre: {{$product->genre}}</span>
             <span>Format: {{$product->format}}</span>
             <span>ID: {{$product->id}}</span>

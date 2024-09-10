@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->string("artist");
-            $table->date("date");
+            $table->string("date");
             $table->string("format");
             $table->string("genre");
             $table->timestamps();
