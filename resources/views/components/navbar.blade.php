@@ -12,20 +12,21 @@
             <x-button>Search</x-button>
         </form>
     </div>
-    <div class="space-y-2">
-        <div class="flex items-center justify-between">
-            <a href="{{ route('products.by_year') }}" class="block">By Year</a>
-        </div>
-        <div class="flex items-center justify-between">
-            <a href="{{ route('products.by_genre') }}" class="block">By Genre</a>
-        </div>
-        <div class="flex items-center justify-between">
-            <a href="{{ route('products.by_format') }}" class="block">By Format</a>
-        </div>
-    </div>
-    
     <div id="app">
-        <dropdown></dropdown>
+        <div class="space-y-2">
+            <div class="flex items-center justify-between">
+                <a href="{{ route('products.by_year') }}" class="block">By Year</a>
+                <custom-filter filter-type="year"></custom-filter>
+            </div>
+            <div class="flex items-center justify-between">
+                <a href="{{ route('products.by_genre') }}" class="block">By Genre</a>
+                <custom-filter filter-type="genre" :valid-options='@json($validGenres)'></custom-filter>
+            </div>
+            <div class="flex items-center justify-between">
+                <a href="{{ route('products.by_format') }}" class="block">By Format</a>
+                <custom-filter filter-type="format" :valid-options='@json($validFormats)'></custom-filter>
+            </div>
+        </div>
     </div>
     @guest
     <div class="space-y-2">

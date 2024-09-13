@@ -2,7 +2,7 @@
     <x-heading>Search Results:</x-heading>
     <div class="mt-4">
         @if (count($products)==0)
-            <h1 class="flex justify-center">No product match your search query.</h1>
+            <h3 class="flex justify-center">No product match your search query.</h3>
         @endif
         <x-grid>
             @foreach ($products as $product)

@@ -37,3 +37,5 @@ Route::get('/products/by-genre/{genre?}', [FilterController::class, 'filterByGen
 Route::get('/products/by-format/{format?}', [FilterController::class, 'filterByFormat'])->name('products.by_format');
 
 Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('logout');
+
+Route::get('/filter-options/{type}', [FilterController::class, 'getFilterOptions']);

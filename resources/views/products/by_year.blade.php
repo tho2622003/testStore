@@ -16,3 +16,12 @@
         @endforeach
     </x-grid>
 </x-layout>
+
+@if($message)
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            alert("{{ $message }}");
+            window.history.back();
+        })
+    </script>
+@endif

@@ -11,42 +11,55 @@ class FilterController extends Controller
     public function filterByYear($year = null)
     {
         $query = Product::select('*', DB::raw('substr(date, -4) as year'));
-    
+        $message = null;
+
         if ($year) {
             $query->whereRaw('substr(date, -4) = ?', [$year]);
         }
+
         $products = $query->orderBy('year', 'asc')->get();
-    
-        return view('products.by_year', compact('products'));
+
+        if ($products->isEmpty()) {
+            $message = "No product found with specified year. Try again.";
+        }
+
+        return view('products.by_year', compact('products', 'message'));
     }
-    
     public function filterByGenre($genre = null)
     {
-        $validGenres = ["Pop", "Hip Hop", "Rock", "Metal", "Electronics"];
-    
         $query = Product::select('*');
-    
-        if ($genre && in_array($genre, $validGenres)) {
+
+        if ($genre) {
             $query->where('genre', $genre);
         }
-    
+
         $products = $query->orderBy('genre')->get();
-    
-        return view('products.by_genre', compact('products', 'validGenres'));
+
+        return view('products.by_genre', compact('products'));
     }
 
     public function filterByFormat($format = null)
     {
-        $validFormats = ["CD", "Vinyl", "Casette", "Digital download"];
-    
         $query = Product::select('*');
-    
-        if ($format && in_array($format, $validFormats)) {
+
+        if ($format) {
             $query->where('format', $format);
         }
-    
+
         $products = $query->orderBy('format')->get();
-    
-        return view('products.by_format', compact('products', 'validFormats'));
+
+        return view('products.by_format', compact('products'));
+    }
+
+    public function getFilterOptions($type)
+    {
+        switch ($type) {
+            case 'genre':
+                return response()->json(["Pop", "Hip Hop", "Rock", "Metal", "Electronics"]);
+            case 'format':
+                return response()->json(["CD", "Vinyl", "Casette", "Digital download"]);
+            default:
+                return response()->json([]);
+        }
     }
 }
