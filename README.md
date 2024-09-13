@@ -32,14 +32,15 @@ npm run dev</pre>
     <li>Add new releases 
     <li>View and edit individual release</li>
     <li>Filter by year, genre or format</li>
+    <li>Add custom filter values</li>
     <li>Search function</li>
 </ul>
 
 <h1>Infrastructure</h1>
 <ul>
-    <li>Database/Model: SQLite, managed via Eloquent ORM</li>
-    <li>Backend/Controller: Laravel</li>
-    <li>Frontend/View: Blade with TailwindCSS and VueJS</li>
+    <li>Database: SQLite, managed via Eloquent ORM</li>
+    <li>Backend: Laravel</li>
+    <li>Frontend: Blade with TailwindCSS and VueJS with Quasar</li>
 </ul>
 
 <h1>Preview</h1>
