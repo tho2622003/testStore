@@ -25,6 +25,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
+            'cover' => 'required',
             'title' => 'required|max:255',
             'artist' => 'required|max:255',
             'date' => 'required|date',

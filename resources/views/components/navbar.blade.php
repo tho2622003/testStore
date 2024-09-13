@@ -7,9 +7,18 @@
         @endauth
     </div>
     <div>
-        <form action="/search" method="GET" class="flex flex-col space-y-2">
-            <input type="text" name="query" placeholder="Search..." value="{{ request('query') }}" class="p-2 rounded text-black">
-            <x-button>Search</x-button>
+        <form action="/search" method="GET">
+            <div class="flex items-center">
+                <input
+                    type="text"
+                    name="query"
+                    placeholder="Search..."
+                    value="{{ request('query') }}"
+                    class="px-3 py-2 mr-3 w-[70%] h-10 rounded text-black border border-gray-300 focus:outline-none focus:border-blue-500">
+                <x-button type="submit" class="h-10 px-3 rounded bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center">
+                    <i class="q-icon material-icons" aria-hidden="true">search</i>
+                </x-button>
+            </div>
         </form>
     </div>
     <div id="app">

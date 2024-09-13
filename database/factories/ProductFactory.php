@@ -18,6 +18,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
+            "cover" => "https://picsum.photos/seed/".fake()->randomNumber(5, false)."/150",
             "title" => fake()->sentence(),
             "artist" => fake()->name(),
             "date" => fake()->dateTimeBetween('2010-01-01', Carbon::now())->format('d-m-Y'),

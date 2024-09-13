@@ -17,7 +17,7 @@
                         <option value="Electronics">Electronics</option>
                     </select>
                 </div>
-                <div class="block">
+                <div class="block mb-5">
                     <label class="text-sm font-medium mr-4" for="format">Choose a format</label>
                     <select class="p-2 pr-10 text-black text-sm font-medium rounded-md mt-4" name="format" id="format">
                         <option value="CD">CD</option>
