@@ -7,11 +7,14 @@ use App\Models\Product;
 
 class AddController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         return view('create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        $seed = fake()->randomNumber(5, false);
         $productAtrr = $request->validate([
             'title' => 'required',
             'artist' => 'required',
@@ -19,6 +22,8 @@ class AddController extends Controller
             'genre' => 'required',
             'format' => 'required',
         ]);
+        $productAtrr["cover_sm"] = "https://picsum.photos/seed/" . $seed . "/150";
+        $productAtrr["cover_lg"] = "https://picsum.photos/seed/" . $seed . "/300";
         $product = Product::create($productAtrr);
         return redirect('/');
     }
