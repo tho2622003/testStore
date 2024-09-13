@@ -25,10 +25,13 @@ class SessionController extends Controller
                 'email' => 'The provided credentials do not match our records.',
             ]);
         }
-
         $request->session()->regenerate();
 
-        return redirect('/')->with('success', 'Welcome back!');
+        if (Auth::user()->is_admin) {
+            return redirect()->route('admin.index');
+        } else {
+            return redirect('/');
+        }
     }
 
     public function destroy(Request $request)

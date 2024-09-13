@@ -10,10 +10,10 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->is_admin) {
+        if ($request->user() && $request->user()->is_admin) {
             return $next($request);
         }
-
+    
         abort(403, 'You are not an administrator');
     }
 }

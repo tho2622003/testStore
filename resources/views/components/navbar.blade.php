@@ -21,6 +21,17 @@
             </div>
         </form>
     </div>
+    @auth
+    @if (Auth::user()->is_admin)
+    @php
+    $currentView = session('admin_view', 'products');
+    $buttonText = $currentView === 'products' ? 'Switch to users table' : 'Switch to products table';
+    @endphp
+    <x-form action="{{ route('switch') }}" method="POST">
+        <x-button>{{ $buttonText }}</x-button>
+    </x-form>
+    @endif
+    @endauth
     <div id="app">
         <div class="space-y-2">
             <div class="flex items-center justify-between">

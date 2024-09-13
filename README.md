@@ -43,5 +43,14 @@ npm run dev</pre>
     <li>Frontend: Blade with TailwindCSS and VueJS with Quasar</li>
 </ul>
 
+<h1>Credentials</h1>
+<p>Use the following credentials to log in:</p>
+<h2>Normal account</h2>
+<pre>E-mail: test@test.com
+     Password: 12345678</pre>
+<h2>Admin account</h2>
+<pre>E-mail: admin@test.com
+     Password: 12345678</pre>
+
 <h1>Preview</h1>
 <img src="https://i.imgur.com/noEuM3w.png"></img>
