@@ -1,20 +1,31 @@
 <nav class="fixed top-0 left-0 bg-blue-800 p-5 flex flex-col space-y-4 justify-between w-56 h-full">
     <div>
-        <a href="/" class="text-xl font-bold block">Musique Store</a>
+        <a href="/" class="text-2xl font-bold block">Musique Store</a>
         @auth
         <span>Welcome, {{Auth::user()->name}}</span>
+        <span class="font-bold text-sm">{{'@'.Auth::user()->username}}</span>
         @endauth
     </div>
     <div>
         <form action="/search" method="GET" class="flex flex-col space-y-2">
             <input type="text" name="query" placeholder="Search..." value="{{ request('query') }}" class="p-2 rounded text-black">
-            <button type="submit" class="bg-blue-600 text-white p-2 rounded">Search</button>
+            <x-button>Search</x-button>
         </form>
     </div>
     <div class="space-y-2">
-        <a href="{{ route('products.by_year') }}" class="block">By Year</a>
-        <a href="{{ route('products.by_genre') }}" class="block">By Genre</a>
-        <a href="{{ route('products.by_format') }}" class="block">By Format</a>
+        <div class="flex items-center justify-between">
+            <a href="{{ route('products.by_year') }}" class="block">By Year</a>
+        </div>
+        <div class="flex items-center justify-between">
+            <a href="{{ route('products.by_genre') }}" class="block">By Genre</a>
+        </div>
+        <div class="flex items-center justify-between">
+            <a href="{{ route('products.by_format') }}" class="block">By Format</a>
+        </div>
+    </div>
+    
+    <div id="app">
+        <dropdown></dropdown>
     </div>
     @guest
     <div class="space-y-2">

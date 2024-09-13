@@ -39,7 +39,7 @@ npm run dev</pre>
 <ul>
     <li>Database/Model: SQLite, managed via Eloquent ORM</li>
     <li>Backend/Controller: Laravel</li>
-    <li>Frontend/View: Blade with TailwindCSS</li>
+    <li>Frontend/View: Blade with TailwindCSS and VueJS</li>
 </ul>
 
 <h1>Preview</h1>
