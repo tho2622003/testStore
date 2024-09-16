@@ -34,23 +34,27 @@ npm run dev</pre>
     <li>Filter by year, genre or format</li>
     <li>Add custom filter values</li>
     <li>Search function</li>
+    <li>Separate and elevated functions for admins</li>
 </ul>
 
 <h1>Infrastructure</h1>
 <ul>
     <li>Database: SQLite, managed via Eloquent ORM</li>
-    <li>Backend: Laravel</li>
+    <li>Backend: Laravel (no Jetstream/Breeze)</li>
     <li>Frontend: Blade with TailwindCSS and VueJS with Quasar</li>
 </ul>
 
 <h1>Credentials</h1>
 <p>Use the following credentials to log in:</p>
-<h2>Normal account</h2>
+<ul>
+<li><b>Normal account</b></li>
 <pre>E-mail: test@test.com
-     Password: 12345678</pre>
-<h2>Admin account</h2>
+Password: 12345678</pre>
+<li><b>Admin account</b></li>
 <pre>E-mail: admin@test.com
-     Password: 12345678</pre>
+Password: 12345678</pre>
+</ul>
 
 <h1>Preview</h1>
-<img src="https://i.imgur.com/noEuM3w.png"></img>
+<img src="https://i.imgur.com/qXFSeck.png">
+<img src="https://i.imgur.com/XnZMspN.png">
