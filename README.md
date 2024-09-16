@@ -34,6 +34,7 @@ npm run dev</pre>
     <li>Filter by year, genre or format</li>
     <li>Add custom filter values</li>
     <li>Search function</li>
+    <li>Separate and elevated functions for admins</li>
 </ul>
 
 <h1>Infrastructure</h1>
