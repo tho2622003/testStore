@@ -1,7 +1,10 @@
 <nav class="fixed top-0 left-0 bg-blue-800 p-5 flex flex-col space-y-4 justify-between w-56 h-full">
-    <div>
+    <div class="flex flex-col">
         <a href="/" class="text-2xl font-bold block">Musique Store</a>
         @auth
+        @if (Auth::user()->is_admin)
+        <a href="{{ route('admin.index') }}" class="font-bold">Return to Admin View</a>
+        @endif
         <span>Welcome, {{Auth::user()->name}}</span>
         <span class="font-bold text-sm">{{'@'.Auth::user()->username}}</span>
         @endauth
@@ -25,7 +28,7 @@
     @if (Auth::user()->is_admin)
     @php
     $currentView = session('admin_view', 'products');
-    $buttonText = $currentView === 'products' ? 'Switch to users table' : 'Switch to products table';
+    $buttonText = $currentView == 'products' ? 'Switch to users table' : 'Switch to products table';
     @endphp
     <x-form action="{{ route('switch') }}" method="POST">
         <x-button>{{ $buttonText }}</x-button>

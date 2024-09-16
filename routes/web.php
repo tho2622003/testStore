@@ -8,6 +8,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\SwitchViewController;
+use App\Http\Controllers\AdminUserController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -38,12 +39,24 @@ Route::get('/filter-options/{type}', [FilterController::class, 'getFilterOptions
 Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('logout');
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/', [AdminProductController::class, 'index'])->name('admin.index');
-    Route::get('/create', [AdminProductController::class, 'create'])->name('admin.create');
-    Route::post('/', [AdminProductController::class, 'store'])->name('admin.store');
-    Route::get('/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.edit');
-    Route::put('/{product}', [AdminProductController::class, 'update'])->name('admin.update');
-    Route::delete('/{product}', [AdminProductController::class, 'destroy'])->name('admin.destroy');
+    Route::get('/', [SwitchViewController::class, 'index'])->name('admin.index');
+    Route::post('/switch', [SwitchViewController::class, 'switch'])->name('switch');
+    
+    Route::get('/product/create', [AdminProductController::class, 'create'])->name('admin.product.create');
+    Route::get('/user/create', [AdminUserController::class, 'create'])->name('admin.user.create');
+
+    Route::post('/', [AdminProductController::class, 'store'])->name('admin.product.store');
+    Route::post('/', [AdminUserController::class, 'store'])->name('admin.user.store');
+
+    Route::get('/product/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.product.edit');
+    Route::get('/user/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.user.edit');
+
+    Route::put('/product/{product}', [AdminProductController::class, 'update'])->name('admin.product.update');
+    Route::put('/user/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
+
+    Route::delete('/product/{product}', [AdminProductController::class, 'destroy'])->name('admin.product.destroy');
+    Route::delete('/product/{user}', [AdminUserController::class, 'destroy'])->name('admin.user.destroy');
+
     Route::post('/switch', [SwitchViewController::class, 'switch'])->name('switch');
 });
 
