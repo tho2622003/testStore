@@ -40,7 +40,7 @@ npm run dev</pre>
 <h1>Infrastructure</h1>
 <ul>
     <li>Database: SQLite, managed via Eloquent ORM</li>
-    <li>Backend: Laravel</li>
+    <li>Backend: Laravel (no Jetstream/Breeze)</li>
     <li>Frontend: Blade with TailwindCSS and VueJS with Quasar</li>
 </ul>
 
