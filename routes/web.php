@@ -22,13 +22,13 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/', [ProductController::class, 'index']);
 
-Route::get('/create', [AddController::class, 'create'])->middleware('auth');
+Route::get('/create', [AddController::class, 'create'])->middleware('auth')->name('product.create');
 Route::post('/create', [AddController::class, 'store'])->middleware('auth');
 
 Route::get('/search', SearchController::class);
 
-Route::get('/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('product.edit');
-Route::patch('/{product}/edit', [ProductController::class, 'update'])->middleware('auth')->name('product.update');
+Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->middleware('can:update,product')->name('product.edit');
+Route::patch('/product/{product}/edit', [ProductController::class, 'update'])->middleware('auth')->middleware('can:update,product')->name('product.update');
 
 Route::get('/products/by-year/{year?}', [FilterController::class, 'filterByYear'])->name('products.by_year');
 Route::get('/products/by-genre/{genre?}', [FilterController::class, 'filterByGenre'])->name('products.by_genre');
@@ -46,18 +46,18 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/user/create', [AdminUserController::class, 'create'])->name('admin.user.create');
 
     Route::post('/', [AdminProductController::class, 'store'])->name('admin.product.store');
-    Route::post('/', [AdminUserController::class, 'store'])->name('admin.user.store');
-
+    Route::post('/user', [AdminUserController::class, 'store'])->name('admin.user.store');
+    
     Route::get('/product/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.product.edit');
     Route::get('/user/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.user.edit');
 
-    Route::put('/product/{product}', [AdminProductController::class, 'update'])->name('admin.product.update');
-    Route::put('/user/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
+    Route::patch('/product/{product}', [AdminProductController::class, 'update'])->name('admin.product.update');
+    Route::patch('/user/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
 
     Route::delete('/product/{product}', [AdminProductController::class, 'destroy'])->name('admin.product.destroy');
-    Route::delete('/product/{user}', [AdminUserController::class, 'destroy'])->name('admin.user.destroy');
+    Route::delete('/user/{user}', [AdminUserController::class, 'destroy'])->name('admin.user.destroy');
 
     Route::post('/switch', [SwitchViewController::class, 'switch'])->name('switch');
 });
 
-Route::get('/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');

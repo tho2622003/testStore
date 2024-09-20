@@ -4,7 +4,7 @@
     <div class="flex flex-col items-center space-y-2">
         <img src="{{$product->cover_sm}}" class="mb-1 rounded-xl">
         <div class="flex flex-col items-center">
-            <a class="font-bold line-clamp-1" href="/{{$product->id}}">{{$product->title}}</a>
+            <a class="font-bold line-clamp-1" href="{{ route('product.show', $product)}}">{{$product->title}}</a>
             <a class="text-sm" href="">{{$product->artist}}</a>
         </div>
         <div class="flex flex-col items-center text-xs">

@@ -20,17 +20,18 @@
         <tbody>
             @foreach ($items as $product)
             <tr>
-                <td class="px-2 py-1 text-lg truncate max-w-96">{{ $product->title }}</td>
-                <td class="px-2 py-1 text-lg">{{ $product->artist }}</td>
-                <td class="px-2 py-1 text-lg">{{ $product->date }}</td>
-                <td class="px-2 py-1 text-lg">{{ $product->genre }}</td>
-                <td class="px-2 py-1 text-lg">{{ $product->format }}</td>
-                <td class="px-2 py-1 text-lg flex flex-row">
-                    <a class="mr-4" href="{{ route('admin.product.edit', $product) }}">Edit</a>
-                    <form method="POST" action="{{ route('admin.product.destroy', $product) }}">
+                <td class="px-3 py-1 border-r border-gray-700 text-md truncate max-w-96">{{ $product->title }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md">{{ $product->artist }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md">{{ $product->date }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md">{{ $product->genre }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md">{{ $product->format }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md space-x-2 flex flex-row">
+                    <x-anchor href=" {{ route('product.show', $product) }} ">Show</x-anchor>
+                    <x-anchor href=" {{ route('admin.product.edit', $product) }} ">Edit</x-anchor>
+                    <form method="POST" action="{{ route('admin.product.destroy', $product) }}" class="delete_form">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Delete</button>
+                        <x-button >Delete</x-button>
                     </form>
                 </td>
             </tr>
@@ -52,21 +53,21 @@
         <tbody>
             @foreach ($items as $user)
             <tr>
-                <td class="px-2 py-1 text-lg truncate max-w-96">{{ $user->name }}</td>
-                <td class="px-2 py-1 text-lg">{{ $user->username }}</td>
-                <td class="px-2 py-1 text-lg">{{ $user->email }}</td>
-                <td class="px-2 py-1 text-lg">
+                <td class="px-3 py-1 border-r border-gray-700 text-md truncate max-w-96">{{ $user->name }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md">{{ $user->username }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md">{{ $user->email }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md">
                     @php
                     echo $user->is_admin ? "Yes" : "No";
                     @endphp
                 </td>
-                <td class="px-2 py-1 text-lg">{{ $user->created_at }}</td>
-                <td class="px-2 py-1 text-lg flex flex-row">
-                    <a class="mr-4" href="{{ route('admin.user.edit', $user) }}">Edit</a>
-                    <form method="POST" action="{{ route('admin.user.destroy', $user) }}">
+                <td class="px-3 py-1 border-r border-gray-700 text-md">{{ $user->created_at }}</td>
+                <td class="px-3 py-1 border-r border-gray-700 text-md space-x-2 flex flex-row">
+                    <x-anchor href="{{ route('admin.user.edit', $user) }}">Edit</x-anchor>
+                    <form method="POST" class="delete_form" action="{{ route('admin.user.destroy', $user) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Delete</button>
+                        <x-button>Delete</x-button>
                     </form>
                 </td>
             </tr>
@@ -75,3 +76,19 @@
     </table>
     @endif
 </x-layout>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteForms = document.querySelectorAll('.delete_form');
+    
+    deleteForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (confirm('Are you sure you want to delete this entry?')) {
+                this.submit();
+            }
+        });
+    });
+});
+</script>

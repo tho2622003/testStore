@@ -1,12 +1,18 @@
 <nav class="fixed top-0 left-0 bg-blue-800 p-5 flex flex-col space-y-4 justify-between w-56 h-full">
     <div class="flex flex-col">
+        @guest
         <a href="/" class="text-2xl font-bold block">Musique Store</a>
+        @endguest
         @auth
         @if (Auth::user()->is_admin)
-        <a href="{{ route('admin.index') }}" class="font-bold">Return to Admin View</a>
-        @endif
+        <a href="{{ route('admin.index') }}" class="text-2xl font-bold block">Admin View</a>
         <span>Welcome, {{Auth::user()->name}}</span>
         <span class="font-bold text-sm">{{'@'.Auth::user()->username}}</span>
+        @else
+        <a href="/" class="text-2xl font-bold block">Musique Store</a>
+        <span>Welcome, {{Auth::user()->name}}</span>
+        <span class="font-bold text-sm">{{'@'.Auth::user()->username}}</span>
+        @endif
         @endauth
     </div>
     <div>
@@ -28,7 +34,7 @@
     @if (Auth::user()->is_admin)
     @php
     $currentView = session('admin_view', 'products');
-    $buttonText = $currentView == 'products' ? 'Switch to users table' : 'Switch to products table';
+    $buttonText = $currentView == 'products' ? 'SWITCH TO USERS TABLE' : 'SWITCH TO PRODUCTS TABLE';
     @endphp
     <x-form action="{{ route('switch') }}" method="POST">
         <x-button>{{ $buttonText }}</x-button>
@@ -59,7 +65,10 @@
     @endguest
     @auth
     <div class="space-y-2">
-        <a href="/create" class="block">Add New Release</a>
+        @if (Auth::user()->is_admin)
+            <a href="{{ route('admin.user.create') }}" class="block">Add New User</a>
+        @endif
+        <a href="{{ route('product.create') }}" class="block">Add New Release</a>
         <form action="{{route('logout')}}" method="POST" class="block">
             @csrf
             @method('DELETE')

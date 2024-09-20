@@ -17,4 +17,10 @@ class AdminProductController extends Controller
     {
         return view("admin.product.edit", ["product" => $product]);
     }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect('/admin')->with('success', 'Product deleted successfully');
+    }
 }

@@ -1,7 +1,7 @@
 <x-layout>
     <x-flex>
         <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
-            <x-form action="/{{ $product->id }}/edit" method="POST"> 
+            <x-form action="{{ route('product.edit', $product) }}" method="POST"> 
                 @csrf
                 @method('PATCH')
                 <x-heading>Edit this Release: {{$product->title}}</x-heading>
